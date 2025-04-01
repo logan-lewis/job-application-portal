@@ -20,7 +20,7 @@ def display_smu_logo():
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
             image = Image.open("SMU_Logo.png")
-            st.image(image, width=500, use_container_width=True)
+            st.image(image, width=500)
     except Exception as e:
         st.error(f"Error loading logo: {e}")
         st.write("Please make sure 'SMU_Logo.png' is in the same directory as app.py")
