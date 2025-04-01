@@ -16,11 +16,23 @@ cursor = conn.cursor()
 # Function to display SMU logo
 def display_smu_logo():
     try:
-        # Create columns to center the image
-        col1, col2, col3 = st.columns([1, 2, 1])
-        with col2:
-            image = Image.open("SMU_Logo.png")
-            st.image(image, width=500)
+        # Add custom CSS for centering
+        st.markdown("""
+        <style>
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+        
+        # Use a container with the custom CSS class
+        st.markdown('<div class="logo-container">', unsafe_allow_html=True)
+        image = Image.open("SMU_Logo.png")
+        st.image(image, width=500)
+        st.markdown('</div>', unsafe_allow_html=True)
     except Exception as e:
         st.error(f"Error loading logo: {e}")
         st.write("Please make sure 'SMU_Logo.png' is in the same directory as app.py")
